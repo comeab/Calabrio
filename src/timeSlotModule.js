@@ -76,6 +76,7 @@ var timeSlotModule = (function () {
     }
 
     const displayAvailableTimeSlots =(duration, min_number_experts, parentDomElement)=>{
+      
         parentDomElement.innerHTML=''
         
         setMeetingDuration(duration)

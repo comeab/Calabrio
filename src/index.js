@@ -2,24 +2,23 @@ import './ui-components/meeting-slots'
 import timeSlotModule from './timeSlotModule'
 
 (function () {
-    
+
+    let duration = 15
+    let min_nr_pizza_experts = 1
+
     window.addEventListener('load', () => {
-        document.querySelector("button#bt_search").addEventListener("click", loadTimeSlots);
-        displayTimeSlots(15, 5);
-    })
 
-
-   const displayTimeSlots = function(duration, min_number_experts){
         const mainDiv = document.querySelector('.main');
-        timeSlotModule.displayAvailableTimeSlots(duration,min_number_experts,mainDiv)
-    }
+        timeSlotModule.displayAvailableTimeSlots(duration, min_nr_pizza_experts, mainDiv)
 
-    const loadTimeSlots=function() {
-        
-        const nr_experts = parseInt(document.querySelector("#min_number_experts").value);
-        const duration = parseInt(document.querySelector("#duration").value);
+        //Event handlers
+        document.querySelector("button#bt_search").addEventListener("click", function () {
+            min_nr_pizza_experts = parseInt(document.querySelector("#min_number_experts").value);
+            duration = parseInt(document.querySelector("#duration").value);
 
-        displayTimeSlots(duration, nr_experts)
-    }
+            timeSlotModule.displayAvailableTimeSlots(duration, min_nr_pizza_experts, mainDiv)
+
+        });
+    })
 
 }())

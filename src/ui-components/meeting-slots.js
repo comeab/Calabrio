@@ -34,7 +34,7 @@ class MeetingSlot extends HTMLElement {
     }
 
     _addEvents(){
-        this.addEventListener('mouseenter', e => {
+        this.addEventListener('click', e => {
             this.querySelector(".team").classList.toggle("show")
         });
         this.addEventListener('mouseleave', e => {
