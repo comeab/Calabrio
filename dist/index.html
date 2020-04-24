@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        *{
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        }
+        .main {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        .card {
+            padding: 1rem;
+            height: auto;
+            border: 1px solid #80C565;
+            background-color: #80C565;
+            border-radius: 18px;
+            box-shadow:
+                inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+                0 0 0 2px rgb(255, 255, 255),
+                0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+
+        }
+        .show{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="filter-box">
+        <input type="date" placeholder="Date" value="2015-12-14" disabled>
+        <input placeholder="Number of Pizza Experts" value="5" name="" id="min_number_experts" type="number" />
+        <input placeholder="Duration" value="15" name="" id="duration" type="number" />
+        <button id="bt_search">Get Team</button>
+    </div>
+    <div class="main">
+
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
