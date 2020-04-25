@@ -1,1 +1,148 @@
-!function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=1)}([function(e,t){class n extends HTMLElement{constructor(){super(),this._addEvents()}set timeSlot(e){this._timeSlot=e,this._render()}get timeSlot(){return this._timeSlot}_formatDate(e){const t=e=>e<10?"0"+e:e;return t(e.getHours())+":"+t(e.getMinutes())}_render(){const e=document.createElement("div");e.className=".expert",e.innerHTML=`\n            <div class='card'>\n                <div><b>${this._formatDate(this._timeSlot.time)} -  (${this._timeSlot.team.length}) </b></div>       \n                <div class='team show'>\n                    ${this._timeSlot.team.map(e=>`<div>${e.Name}</div>`).join("")}\n                </div>\n            </div>\n            `,this.appendChild(e)}_addEvents(){this.addEventListener("mouseenter",e=>{this.querySelector(".team").classList.toggle("show")}),this.addEventListener("mouseleave",e=>{this.querySelector(".team").classList.toggle("show")})}}customElements.define("meeting-slot",n)},function(e,t,n){"use strict";n.r(t);n(0);const r=["Lunch","Short break"],o=[0,15,30,45];let s=15,i=[];const c=e=>parseInt(RegExp(/(\d+)/).exec(e)[0]),u=(e,t)=>{return(n=e)%(r=t)?n+(r-n%r):n;var n,r},a=e=>!r.includes(e),l=e=>o.includes(e),d=(e,t="2015-12-14")=>(async e=>{if(i.length>0)return i;const t=await fetch("./../src/mock-data/pizza_experts.json?"+e),n=await t.json();return i=n.ScheduleResult.Schedules,i})(t).then(t=>(e=>{const t=e.reduce((e,t)=>(t.IsFullDayAbsence||t.Projection.forEach(n=>{if(a(n.Description)){const r=new Date(c(n.Start)),o=new Date(r.getTime()),i=u(o.getMinutes(),s);o.setMinutes(i);for(let r=1;r<=n.minutes/s;r++){const{Name:n,PersonId:r}=t;l(o.getMinutes())&&(e[o]?e[o].team.push({Name:n,PersonId:r}):e[o]={time:o,team:[{Name:n,PersonId:r}]}),o.setMinutes(o.getMinutes()+s)}}}),e),[]);return Object.values(t)})(t).filter(t=>t.team.length>=e)).catch(e=>console.error(e));let m=15,f=1;window.addEventListener("DOMContentLoaded",()=>{const e=document.querySelector(".main");p(m,f,e),document.querySelector("button#bt_search").addEventListener("click",(function(){f=parseInt(document.querySelector("#min_number_experts").value),m=parseInt(document.querySelector("#duration").value),p(m,f,e)}))});const p=(e,t,n)=>{n.innerHTML="";const r=document.createDocumentFragment();s=e,d(t).then(e=>{e.map(e=>{const t=document.createElement("meeting-slot");t.timeSlot=e,r.appendChild(t)}),n.appendChild(r)})}}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./node_modules/node-fetch/browser.js":
+/*!********************************************!*\
+  !*** ./node_modules/node-fetch/browser.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\n// ref: https://github.com/tc39/proposal-global\nvar getGlobal = function () {\n\t// the only reliable means to get the global object is\n\t// `Function('return this')()`\n\t// However, this causes CSP violations in Chrome apps.\n\tif (typeof self !== 'undefined') { return self; }\n\tif (typeof window !== 'undefined') { return window; }\n\tif (typeof global !== 'undefined') { return global; }\n\tthrow new Error('unable to locate global object');\n}\n\nvar global = getGlobal();\n\nmodule.exports = exports = global.fetch;\n\n// Needed for TypeScript and Webpack.\nexports.default = global.fetch.bind(global);\n\nexports.Headers = global.Headers;\nexports.Request = global.Request;\nexports.Response = global.Response;\n\n//# sourceURL=webpack:///./node_modules/node-fetch/browser.js?");
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ui_components_meeting_slots__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ui-components/meeting-slots */ \"./src/ui-components/meeting-slots.js\");\n/* harmony import */ var _ui_components_meeting_slots__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ui_components_meeting_slots__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _modules_timeSlotModule__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/timeSlotModule */ \"./src/modules/timeSlotModule.js\");\n\r\n\r\n\r\nlet duration = 15;\r\nlet min_nr_pizza_experts = 5;\r\n\r\nwindow.addEventListener('DOMContentLoaded', () => {\r\n\r\n    const mainDiv = document.querySelector('.main');\r\n    displayAvailableTimeSlots(duration, min_nr_pizza_experts, mainDiv)\r\n\r\n    //Event handlers\r\n    document.querySelector(\"button#bt_search\").addEventListener(\"click\", function () {\r\n        min_nr_pizza_experts = parseInt(document.querySelector(\"#min_number_experts\").value);\r\n        duration = parseInt(document.querySelector(\"#duration\").value);\r\n\r\n        displayAvailableTimeSlots(duration, min_nr_pizza_experts, mainDiv)\r\n\r\n    });\r\n})\r\n\r\n\r\nconst displayAvailableTimeSlots = (duration, min_number_experts, parentDomElement) => {\r\n\r\n    parentDomElement.innerHTML = ''\r\n    const docFrag = document.createDocumentFragment()\r\n\r\n    _modules_timeSlotModule__WEBPACK_IMPORTED_MODULE_1__[\"setMeetingDuration\"](duration)\r\n    _modules_timeSlotModule__WEBPACK_IMPORTED_MODULE_1__[\"getAvailableTimeSlots\"](min_number_experts)\r\n        .then(results => {\r\n\r\n            results.map(pizza_expert => {\r\n                const meetingSlotComponent = document.createElement('meeting-slot')\r\n                meetingSlotComponent.timeSlot = pizza_expert\r\n\r\n                docFrag.appendChild(meetingSlotComponent)\r\n\r\n            })\r\n            parentDomElement.appendChild(docFrag)\r\n        })\r\n}\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/api_url.js":
+/*!********************************!*\
+  !*** ./src/modules/api_url.js ***!
+  \********************************/
+/*! exports provided: remoteServerUrl, localDataUrl */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"remoteServerUrl\", function() { return remoteServerUrl; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"localDataUrl\", function() { return localDataUrl; });\n\r\n//Using proxy server to avoid Cross site scripting problem. Our API is not allowing cross site requests\r\nconst proxyServer = 'https://cors-anywhere.herokuapp.com/';\r\n\r\nconst remoteServerUrl = `${proxyServer}http://pizzacabininc.azurewebsites.net/PizzaCabinInc.svc/schedule/`;\r\n\r\n//When using our local data\r\nconst localDataUrl='./../src/mock-data/pizza_experts.json?';\r\n\r\n\n\n//# sourceURL=webpack:///./src/modules/api_url.js?");
+
+/***/ }),
+
+/***/ "./src/modules/timeSlotModule.js":
+/*!***************************************!*\
+  !*** ./src/modules/timeSlotModule.js ***!
+  \***************************************/
+/*! exports provided: splitTaskInSlots, getAvailableTimeSlots, setMeetingDuration */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"splitTaskInSlots\", function() { return splitTaskInSlots; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getAvailableTimeSlots\", function() { return getAvailableTimeSlots; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"setMeetingDuration\", function() { return setMeetingDuration; });\n/* harmony import */ var _api_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api_url */ \"./src/modules/api_url.js\");\n\r\nconst fetch = __webpack_require__(/*! node-fetch */ \"./node_modules/node-fetch/browser.js\")\r\nconst EXCLUDED_TASKS = [\"Lunch\", \"Short break\"];\r\nconst POSSIBLE__TIMES = [0, 15, 30, 45];\r\n\r\nconst apiUrl = _api_url__WEBPACK_IMPORTED_MODULE_0__[\"remoteServerUrl\"];\r\nlet meetingDuration = 15;\r\nlet schedules = [];\r\n\r\nconst getSchedules = async (date) => {\r\n\r\n    if (schedules.length > 0) return schedules;\r\n\r\n    const res = await fetch(`${apiUrl}${date}`);\r\n    const output = await res.json();\r\n    schedules = output.ScheduleResult.Schedules;\r\n\r\n    return schedules;\r\n}\r\n\r\nconst generateTimeSlots = (schedules, meetingDuration) => {\r\n\r\n    const results = schedules.reduce((timeSlots, pizzaExpert) => {\r\n        const { Name, PersonId } = pizzaExpert;\r\n\r\n        if (!pizzaExpert.IsFullDayAbsence) {\r\n\r\n            pizzaExpert.Projection.forEach(task => {\r\n                //only get tasks where pizza expert is available\r\n                if (!isPizzaExpertOnABreak(task.Description)) {\r\n                    //we calculate all possible time slots based meeting duration within this task.    \r\n                    const timeSlotsOfCurrentTask = splitTaskInSlots(task.Start, task.minutes, meetingDuration)\r\n                    timeSlotsOfCurrentTask.forEach(slot => {\r\n                        if (!timeSlots[slot]) {\r\n                            timeSlots[slot] = { time: slot, team: [] }\r\n                        }\r\n                        timeSlots[slot].team.push({ Name: Name, PersonId: PersonId });\r\n                    })\r\n                }\r\n            })\r\n        }\r\n        return timeSlots\r\n    }, [])\r\n\r\n    return Object.values(results)\r\n}\r\n\r\n//@export only for unit testing\r\nconst splitTaskInSlots = (taskStart, taskDuration, meetingDuration) => {\r\n    let timeSlots = [];\r\n    const startTime = new Date(extractTimeStamp(taskStart));\r\n    const slot = new Date(startTime.getTime());\r\n\r\n    //next possible point in time this worker can participate in a meeting\r\n    const nextPossibleSlot = getNextPossibleTimeSlot(slot.getMinutes(), meetingDuration);\r\n    slot.setMinutes(nextPossibleSlot);\r\n\r\n    //we are adding this employee to as many slots as this activity allows\r\n    for (let i = 1; i <= (taskDuration / meetingDuration); i++) {\r\n        if (isValidStartTime(slot.getMinutes())) {\r\n            timeSlots.push(new Date(slot.getTime()));\r\n        }\r\n        //we reset time for next slot. \r\n        slot.setMinutes(slot.getMinutes() + meetingDuration);\r\n    }\r\n    return timeSlots;\r\n}\r\n\r\nconst getAvailableTimeSlots = (nr_experts, date = '2015-12-14') => {\r\n\r\n    return getSchedules(date)\r\n        .then(schedules => {\r\n            const timeSlots = generateTimeSlots(schedules, meetingDuration);\r\n\r\n            return timeSlots.filter(el => el.team.length >= nr_experts);\r\n        })\r\n        .catch(err => console.error(err))\r\n}\r\n\r\nconst setMeetingDuration = (value) => {\r\n    meetingDuration = value;\r\n}\r\n\r\n\r\n\r\n//helper functions\r\nconst getNextPossibleTimeSlot = (minutes, meetingDuration) => closestMultiple(minutes, meetingDuration);\r\nconst isPizzaExpertOnABreak = (task) => EXCLUDED_TASKS.includes(task);\r\nconst isValidStartTime = (time) => POSSIBLE__TIMES.includes(time);\r\n\r\nconst extractTimeStamp = (str) => parseInt(RegExp(/(\\d+)/).exec(str)[0]);\r\nconst closestMultiple = (n, x) => n % x ? n + (x - n % x) : n;\n\n//# sourceURL=webpack:///./src/modules/timeSlotModule.js?");
+
+/***/ }),
+
+/***/ "./src/ui-components/meeting-slots.js":
+/*!********************************************!*\
+  !*** ./src/ui-components/meeting-slots.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("class MeetingSlot extends HTMLElement {\r\n\r\n    constructor() {\r\n        super()\r\n        this.addEvents()\r\n\r\n    }\r\n    set timeSlot(value) {\r\n        this._timeSlot = value\r\n        this.render()\r\n    }\r\n    get timeSlot() {\r\n        return this._timeSlot\r\n    }\r\n\r\n    formatDate(date) {\r\n        const addZero = (i) => i < 10 ? \"0\" + i : i\r\n        return addZero(date.getHours()) + \":\" + addZero(date.getMinutes())\r\n    }\r\n    render() {\r\n        const div = document.createElement('div')\r\n\r\n        div.innerHTML = `\r\n            <div class='card'>\r\n                <div><b>${this.formatDate(this._timeSlot.time)} -  (${this._timeSlot.team.length}) </b></div>       \r\n                <div class='team show'>\r\n                    ${this._timeSlot.team.map(el => {\r\n            return `<div>${el.Name}</div>`\r\n        }).join('')}\r\n                </div>\r\n            </div>\r\n            `\r\n        this.appendChild(div)\r\n    }\r\n\r\n    addEvents() {\r\n        this.addEventListener('mouseenter', e => {\r\n            this.querySelector(\".team\").classList.toggle(\"show\")\r\n        });\r\n        this.addEventListener('mouseleave', e => {\r\n            this.querySelector(\".team\").classList.toggle(\"show\")\r\n        });\r\n    }\r\n}\r\n\r\ncustomElements.define('meeting-slot', MeetingSlot)\n\n//# sourceURL=webpack:///./src/ui-components/meeting-slots.js?");
+
+/***/ })
+
+/******/ });

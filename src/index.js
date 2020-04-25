@@ -2,7 +2,7 @@ import './ui-components/meeting-slots'
 import * as timeSlotModule from './modules/timeSlotModule'
 
 let duration = 15;
-let min_nr_pizza_experts = 1;
+let min_nr_pizza_experts = 5;
 
 window.addEventListener('DOMContentLoaded', () => {
 
