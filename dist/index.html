@@ -10,6 +10,13 @@
         *{
             font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
         }
+        .filter-box {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
         .main {
             max-width: 1200px;
             margin: 20px auto;
@@ -39,10 +46,10 @@
 <body>
 
     <div class="filter-box">
-        <input type="date" placeholder="Date" value="2015-12-14" disabled>
-        <input placeholder="Number of Pizza Experts" value="5" name="" id="min_number_experts" type="number" />
-        <input placeholder="Duration" value="15" name="" id="duration" type="number" />
-        <button id="bt_search">Get Team</button>
+        <div>Date: <input type="date" placeholder="Date" value="2015-12-14" disabled></div>
+        <div>No. of Experts: <input placeholder="Number of Pizza Experts" value="5" name="" id="min_number_experts" type="number" /></div>
+        <div>Meeting Duration: <input placeholder="Duration" value="15" name="" id="duration" type="number" /></div>
+        <div><button id="bt_search">Get Team</button></div>
     </div>
     <div class="main">
 
