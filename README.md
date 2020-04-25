@@ -1,4 +1,42 @@
-# Calabrio code test assignment
+# For the purpose of evaluation (will be removed after interview) #
+The **core code** of this assignment is on the **path /src/modules/timeSlotModule.js**
+Displaying results on the UI is on the path **/src/ui-components/meeting-slots.js** and **/src/index.js**
+
+
+## Algorithm ##
+```
+For each pizza expert
+   if pizza expert will be working then
+       For each of his tasks
+          if pizza expert is not having a break then
+               add all posisible slots of time he is available for a meeting
+          /if
+       /For
+   /if
+/For
+```
+The algorithm basically, lets each pizza expert / worker fill in a list with all slots of time he is available during his work period.
+
+## Out interface ##
+
+_**getSchedules**: responsible for fetching data from server/locally in a json file_
+
+_**splitTaskInSlots**: splits a period of time into slots of X time where X is the duration of a meeting. So a 120 minute task, with meetings of 15min, can be split into 120/15 = 8 time slots._
+
+_**generateTimeSlots**: For each worker, picks all his tasks and gathers all the possible time slots he can be free for a meeting._
+
+_**getAvailableTimeSlots**: gets the result from all generated slots and filters out those with a minimum number of workers._
+
+## Tech Stack ##
+-Vanila JS
+-Mocha, Chai
+-Webpack and Babel
+
+           
+    
+
+
+# Code test assignment
 
 Programming Case
 A Pizza chain has grown a lot recently. Now they are so big that they have some
