@@ -16,6 +16,7 @@ short break).
 As a first step PCI wants a tool that based on the json object bellow and an input on how many team members need to be present at the meeting, can find all suitable 15-minute intervals (possible start times are 00, 15, 30 and 45) for the daily stand-up.
 
 JSON object structure
+```json
  "Schedules": [
             {
                 "Date": "/Date(1450051200000+0000)/",
@@ -29,7 +30,6 @@ JSON object structure
                         "minutes": 120
                     },
                     {
-                        "Color": "#FF0000",
                         "Description": "Short break",
                         "Start": "/Date(1450087200000+0000)/",
                         "minutes": 15
@@ -37,3 +37,4 @@ JSON object structure
                 ]
             }
        ]
+```
